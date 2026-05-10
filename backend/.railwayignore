@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+*.pyo
+.env
+backtest/quant_backtest.db
+backtest/quant_backtest.db-wal
+backtest/quant_backtest.db-shm
+start.bat
+get_kite_token.py
+repair_backtest_state.py

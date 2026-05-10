@@ -1,0 +1,99 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Dark theme (default) ──────────────────────────────────────────── */
+:root,
+:root[data-theme='dark'] {
+  --bg:      #09090b;
+  --bg2:     #111113;
+  --bg3:     #18181b;
+  --border:  #1c1c20;
+  --border2: #27272b;
+  --text:    #fafafa;
+  --text2:   #a1a1aa;
+  --text3:   #52525b;
+  --accent:  #22d3ee;
+  --green:   #22c55e;
+  --red:     #ef4444;
+  --amber:   #f59e0b;
+  --purple:  #a855f7;
+
+  --chart-bg:    #09090b;
+  --chart-grid:  #1c1c20;
+  --chart-text:  #a1a1aa;
+
+  --mono:    'JetBrains Mono', 'Fira Code', monospace;
+  --sans:    'Inter', sans-serif;
+}
+
+/* ── Light theme ──────────────────────────────────────────────────── */
+:root[data-theme='light'] {
+  --bg:      #fafafa;
+  --bg2:     #ffffff;
+  --bg3:     #f4f4f5;
+  --border:  #e4e4e7;
+  --border2: #d4d4d8;
+  --text:    #18181b;
+  --text2:   #52525b;
+  --text3:   #a1a1aa;
+  --accent:  #0891b2;
+  --green:   #16a34a;
+  --red:     #dc2626;
+  --amber:   #d97706;
+  --purple:  #9333ea;
+
+  --chart-bg:   #ffffff;
+  --chart-grid: #e4e4e7;
+  --chart-text: #52525b;
+}
+
+* { box-sizing: border-box; }
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 180ms ease, color 180ms ease;
+}
+
+.font-mono, code, pre, .num { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: var(--bg2); }
+::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text3); }
+
+.panel { background: var(--bg2); border: 1px solid var(--border); transition: background-color 180ms ease, border-color 180ms ease; }
+.panel-inset { background: var(--bg3); border: 1px solid var(--border); }
+.divider { border-top: 1px solid var(--border); }
+.chip { display: inline-flex; align-items: center; gap: 6px; padding: 2px 8px; border-radius: 999px; font-size: 11px; font-weight: 500; }
+.chip-green { background: color-mix(in srgb, var(--green) 15%, transparent); color: var(--green); }
+.chip-red { background: color-mix(in srgb, var(--red) 15%, transparent); color: var(--red); }
+.chip-amber { background: color-mix(in srgb, var(--amber) 15%, transparent); color: var(--amber); }
+.chip-cyan { background: color-mix(in srgb, var(--accent) 15%, transparent); color: var(--accent); }
+.chip-neutral { background: var(--bg3); color: var(--text2); }
+
+.tab { padding: 6px 12px; font-size: 12px; font-weight: 500; color: var(--text2); background: transparent; border: 1px solid transparent; border-radius: 6px; cursor: pointer; transition: all 120ms; }
+.tab:hover { color: var(--text); background: var(--bg3); }
+.tab.active { color: var(--accent); background: color-mix(in srgb, var(--accent) 10%, transparent); border-color: color-mix(in srgb, var(--accent) 30%, transparent); }
+
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 6px 12px; font-size: 12px; font-weight: 500; color: var(--text); background: var(--bg3); border: 1px solid var(--border2); border-radius: 6px; cursor: pointer; transition: all 120ms; }
+.btn:hover:not(:disabled) { background: var(--border2); border-color: var(--text3); }
+.btn-primary { background: color-mix(in srgb, var(--accent) 15%, transparent); border-color: color-mix(in srgb, var(--accent) 40%, transparent); color: var(--accent); }
+.btn-primary:hover:not(:disabled) { background: color-mix(in srgb, var(--accent) 25%, transparent); }
+.btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.skeleton { background: linear-gradient(90deg, var(--bg3) 0%, var(--border2) 50%, var(--bg3) 100%); background-size: 200% 100%; animation: shimmer 1.4s infinite; }
+@keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+
+.dot { display: inline-block; width: 6px; height: 6px; border-radius: 999px; }
+.bar { height: 4px; border-radius: 2px; background: var(--bg3); overflow: hidden; }
+.bar > span { display: block; height: 100%; }
+
+.text-mono-tight { font-family: var(--mono); letter-spacing: -0.01em; font-variant-numeric: tabular-nums; }
