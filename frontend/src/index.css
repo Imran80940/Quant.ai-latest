@@ -97,3 +97,19 @@ html, body, #root {
 .bar > span { display: block; height: 100%; }
 
 .text-mono-tight { font-family: var(--mono); letter-spacing: -0.01em; font-variant-numeric: tabular-nums; }
+
+/* ── Mobile responsive helpers ─────────────────────────────────────── */
+.table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+@media (max-width: 767px) {
+  /* Make all page content scrollable on mobile */
+  .page-scroll { overflow-y: auto; -webkit-overflow-scrolling: touch; }
+
+  /* Shrink font sizes slightly on small screens */
+  .text-xs { font-size: 10px; }
+  table { font-size: 11px; }
+  th, td { padding: 4px 6px !important; white-space: nowrap; }
+
+  /* Charts: ensure minimum height on mobile */
+  .recharts-responsive-container { min-height: 200px; }
+}
