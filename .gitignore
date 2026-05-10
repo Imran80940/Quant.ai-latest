@@ -5,7 +5,7 @@ __pycache__/
 *.pyd
 .Python
 *.egg-info/
-dist/
+backend/dist/
 build/
 
 # Env files — NEVER commit secrets
@@ -18,9 +18,11 @@ backend/backtest/*.db
 backend/backtest/*.db-wal
 backend/backtest/*.db-shm
 
+# yfinance parquet cache — regenerated automatically, no need to commit
+backend/backtest/cache/
+
 # Node
 frontend/node_modules/
-frontend/dist/
 
 # OS
 .DS_Store
