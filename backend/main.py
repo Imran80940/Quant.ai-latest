@@ -143,7 +143,11 @@ class RecommendBody(BaseModel):
 # ── Routes ─────────────────────────────────────────────────────────────
 
 @app.get("/")
-def root() -> Dict[str, Any]:
+def root():
+    if os.environ.get("SERVE_FRONTEND", "false").lower() == "true":
+        index = os.path.join(os.path.dirname(__file__), "static", "index.html")
+        if os.path.isfile(index):
+            return FileResponse(index)
     return {
         "name": "QUANT.AI",
         "version": "1.0.0",
