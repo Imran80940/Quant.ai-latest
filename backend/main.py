@@ -144,10 +144,9 @@ class RecommendBody(BaseModel):
 
 @app.get("/")
 def root():
-    if os.environ.get("SERVE_FRONTEND", "false").lower() == "true":
-        index = os.path.join(os.path.dirname(__file__), "static", "index.html")
-        if os.path.isfile(index):
-            return FileResponse(index)
+    index = os.path.join(os.path.dirname(__file__), "static", "index.html")
+    if os.path.isfile(index):
+        return FileResponse(index)
     return {
         "name": "QUANT.AI",
         "version": "1.0.0",
@@ -903,11 +902,9 @@ async def paper_trading_stream():
     )
 
 
-# ── Static frontend (Railway single-service mode) ─────────────────────────────
-# When SERVE_FRONTEND=true the backend also serves the built React app.
-# Railway build step copies frontend/dist into backend/static before uvicorn starts.
+# ── Static frontend ───────────────────────────────────────────────────────────
 _STATIC_DIR = os.path.join(os.path.dirname(__file__), "static")
-if os.environ.get("SERVE_FRONTEND", "false").lower() == "true" and os.path.isdir(_STATIC_DIR):
+if os.path.isdir(_STATIC_DIR):
     app.mount("/assets", StaticFiles(directory=os.path.join(_STATIC_DIR, "assets")), name="assets")
 
     @app.get("/{full_path:path}", include_in_schema=False)
